@@ -12,7 +12,7 @@ elif numero_user > 0: #no hace nada por ahora, queda como esta porque evaluaria 
     pass
 elif numero_user < 0: #esto es lo que estoy probando ahora al final del codigo
     opciones=opciones+"N"
-    print("pase por aca")
+    print(f"la opcion es {opciones}")
     
 
 
@@ -41,10 +41,7 @@ elif opciones == "H" or opciones== "Z":
         resultado.append(str(hexa[cifra_h])) #aca reemplazamos cada valor decimal por su igual en la lista hexa al comeinzo. Podria ser un diccionario pero como no vimos... cumple
     final_hexa="".join(reversed(resultado))
     print(f"El numero decimal {numero_user} equivale a {final_hexa} en el sistema hexadecimal.")
-else:
-    print("Opcion no válida")
-    
-if opciones=="BN": #intentanto hacer la conversion a binario de un negativo usando ca1 y ca2
+elif opciones=="BN": #intentanto hacer la conversion a binario de un negativo usando ca1 y ca2
     resultado=[]
     numero=abs(numero_user)
     print(numero)
@@ -59,5 +56,61 @@ if opciones=="BN": #intentanto hacer la conversion a binario de un negativo usan
             c1.append("0")
         else:
             c1.append("1")
-    c1="".join(c1) #hasta aca es ca1
+    # c1="".join(c1) #hasta aca es ca1
     print(c1)
+    c2=c1
+    carry=True
+    for i in range(len(c2)-1,-1,-1): #usamos start, stop y step para comenzar desde el 0 usando -1, hasta la pisicion 0 (-1) y decrementando -1 cada vez.
+    
+        if c2[i] == "1" and carry: #si el primer valor a sumar (ultimo num de la derecha) es un 1 reemplazar ese 1 por un cero y mantener el carry true, tambien escala al siguiente numero en el indice
+            c2[i]="0"
+            carry=True
+        elif c2[i]=="0" and carry: #si el primer valor de derecha a izquierda es un cero reemplazar ese cero por un 1 y cambiar el carry a false. 
+            c2[i]="1"
+            carry = False
+        # elif carry and i==0: #no funciona aca porque lo corta antes de evaluar el valor en la pos 0 
+        #     num.insert(0,"1")
+        else:
+            break #si el carry es falso no hace falta revisar los otros valores.
+
+    if carry: #si hay carry al final del for agrega un 1 en la pos 0 aumentando 1 bit 
+        c2.insert(0,"1")
+
+    c2.insert(0,"1") #agregamos 1 para el negativo
+    
+    c2=''.join(c2)
+    print(f"el resultado ca2 es {c2}")
+    
+else:
+    print("Opcion no válida")
+    
+
+
+
+
+"""num="1111"    
+num=list(num)
+carry=True #el carry inicial es TRUE porque sumamos 1
+
+for i in range(len(num)-1,-1,-1): #usamos start, stop y step para comenzar desde el 0 usando -1, hasta la pisicion 0 (-1) y decrementando -1 cada vez.
+    print(i)
+    if num[i] == "1" and carry: #si el primer valor a sumar (ultimo num de la derecha) es un 1 reemplazar ese 1 por un cero y mantener el carry true, tambien escala al siguiente numero en el indice
+        num[i]="0"
+        carry=True
+    elif num[i]=="0" and carry: #si el primer valor de derecha a izquierda es un cero reemplazar ese cero por un 1 y cambiar el carry a false. 
+        num[i]="1"
+        carry = False
+    # elif carry and i==0: #no funciona aca porque lo corta antes de evaluar el valor en la pos 0 
+    #     num.insert(0,"1")
+    else:
+        break #si el carry es falso no hace falta revisar los otros valores.
+
+if carry: #si hay carry al final del for agrega un 1 en la pos 0 aumentando 1 bit 
+    num.insert(0,"1")
+
+
+num=''.join(num)
+print(num)
+
+# for i in range(len(num)-1, -1, -1):
+#     print(f"Índice: {i}, Valor: {num[i]}")"""
