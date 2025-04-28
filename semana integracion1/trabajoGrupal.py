@@ -28,8 +28,6 @@ while True: #bucle para que el usuario ingrese un valor correcto
     print("-"*40)
    
     
-    print("Ingrese un numero entero positivo en base decimal para convertirlo.")
-    
     while True:        
         numero_user=input("Numero --> ")
         
