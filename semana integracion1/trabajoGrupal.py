@@ -18,7 +18,15 @@ while True: #bucle para que el usuario ingrese un valor correcto
     elif opciones == "F":
         print("Gracias por pasa!")
         print("-"*40)
-        break   
+        break
+    
+    if opciones in ("B", "O", "X", "Z"):
+        print("Ingrese un numero entero positivo en base decimal para convertirlo.")
+    
+    elif opciones == "D":
+        print("Ingrese un numero binario para convertirlo a decimal.")
+    print("-"*40)
+   
     
     print("Ingrese un numero entero positivo en base decimal para convertirlo.")
     
