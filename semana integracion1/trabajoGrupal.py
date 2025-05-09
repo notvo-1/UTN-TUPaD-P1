@@ -20,7 +20,7 @@ while True: #bucle para que el usuario ingrese un valor correcto
         print("-"*40)
         break
     
-    if opciones in ("B", "O", "X", "Z"):
+    if opciones in ("B", "O", "H", "Z"):
         print("Ingrese un numero entero positivo en base decimal para convertirlo.")
     
     elif opciones == "D":
@@ -37,6 +37,7 @@ while True: #bucle para que el usuario ingrese un valor correcto
             for _ in numero_user:
                 if _ not in ("0","1"):
                     es_binario = False
+                    break
                 else:
                     es_binario = True
         
