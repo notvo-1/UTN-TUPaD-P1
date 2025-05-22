@@ -113,4 +113,4 @@ laberinto4 = [
 
 
 camino = []
-resolver_laberinto(laberinto2, 0, 0, camino,0) #laberinto, x, y, camino, cuenta
+resolver_laberinto(laberinto3, 0, 0, camino,0) #laberinto, x, y, camino, cuenta
